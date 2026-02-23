@@ -1,0 +1,1 @@
+default: --require-module @babel/register --require specs/support/env.js --format progress --format json:reports/cucumber_report.json
