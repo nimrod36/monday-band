@@ -19,7 +19,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 51094310
+              "duration": 57205517
             }
           },
           {
@@ -32,7 +32,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1244194
+              "duration": 811595
             }
           },
           {
@@ -45,7 +45,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19935389
+              "duration": 13682535
             }
           },
           {
@@ -58,7 +58,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 36183083
+              "duration": 27333388
             }
           },
           {
@@ -71,7 +71,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 135471
+              "duration": 135194
             }
           },
           {
@@ -102,7 +102,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 12103587
+              "duration": 11455865
             }
           }
         ],
@@ -126,7 +126,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 55572387
+              "duration": 46212098
             }
           },
           {
@@ -139,7 +139,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 566550
+              "duration": 547020
             }
           },
           {
@@ -152,7 +152,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 17335666
+              "duration": 16188491
             }
           },
           {
@@ -165,7 +165,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 500983
+              "duration": 455589
             }
           },
           {
@@ -178,7 +178,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 33288343
+              "duration": 27056419
             }
           },
           {
@@ -191,7 +191,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 75679
+              "duration": 237342
             }
           },
           {
@@ -204,7 +204,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 105936
+              "duration": 135879
             }
           },
           {
@@ -217,7 +217,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 7821772,
+              "duration": 6394443,
               "error_message": "AssertionError [ERR_ASSERTION]: Commit should be rejected\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:111:3)"
             }
           },
@@ -239,7 +239,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 16477160
+              "duration": 10024237
             }
           }
         ],
@@ -263,7 +263,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 58015505
+              "duration": 49837086
             }
           },
           {
@@ -276,7 +276,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 439162
+              "duration": 412872
             }
           },
           {
@@ -289,7 +289,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 16924997
+              "duration": 13882787
             }
           },
           {
@@ -302,7 +302,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 648820
+              "duration": 448283
             }
           },
           {
@@ -315,7 +315,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32892390
+              "duration": 26468976
             }
           },
           {
@@ -328,7 +328,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 60181
+              "duration": 51641
             }
           },
           {
@@ -341,7 +341,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 4386691,
+              "duration": 585445,
               "error_message": "AssertionError [ERR_ASSERTION]: Partial failure should reject commit\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:120:3)"
             }
           },
@@ -363,7 +363,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 14621754
+              "duration": 12852653
             }
           }
         ],
@@ -387,7 +387,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 61943682
+              "duration": 50562481
             }
           },
           {
@@ -400,7 +400,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3039480
+              "duration": 416519
             }
           },
           {
@@ -413,7 +413,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 24414620
+              "duration": 14256782
             }
           },
           {
@@ -426,7 +426,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 58819211
+              "duration": 29653668
             }
           },
           {
@@ -439,7 +439,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 156076
+              "duration": 102832
             }
           },
           {
@@ -452,7 +452,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23706599
+              "duration": 12247308
             }
           },
           {
@@ -460,7 +460,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 10242989
+              "duration": 8014989
             }
           }
         ],
@@ -484,7 +484,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 61942368
+              "duration": 47054313
             }
           },
           {
@@ -497,7 +497,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 498748
+              "duration": 764778
             }
           },
           {
@@ -510,7 +510,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19312020
+              "duration": 12810409
             }
           },
           {
@@ -523,7 +523,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 18739263
+              "duration": 17271775
             }
           },
           {
@@ -536,7 +536,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 592917,
+              "duration": 569077,
               "error_message": "AssertionError [ERR_ASSERTION]: Should be a \"no changes\" error\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:136:3)"
             }
           },
@@ -545,7 +545,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 8338344
+              "duration": 7849798
             }
           }
         ],
@@ -569,7 +569,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 61816892
+              "duration": 47167921
             }
           },
           {
@@ -582,7 +582,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 755846
+              "duration": 639125
             }
           },
           {
@@ -595,7 +595,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20008702
+              "duration": 14521910
             }
           },
           {
@@ -608,7 +608,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 421849
+              "duration": 394937
             }
           },
           {
@@ -621,7 +621,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 33317264
+              "duration": 26257425
             }
           },
           {
@@ -634,7 +634,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 607629,
+              "duration": 915077,
               "error_message": "AssertionError [ERR_ASSERTION]: Should show progress\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:142:3)"
             }
           },
@@ -656,7 +656,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 10934373
+              "duration": 9021743
             }
           }
         ],
@@ -680,7 +680,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 129256794
+              "duration": 49096474
             }
           },
           {
@@ -693,7 +693,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 455246
+              "duration": 517481
             }
           },
           {
@@ -706,7 +706,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 128607092
+              "duration": 75653258
             }
           },
           {
@@ -719,7 +719,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 119693195
+              "duration": 76262723
             }
           },
           {
@@ -732,7 +732,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 133196
+              "duration": 132236
             }
           },
           {
@@ -763,7 +763,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 15484942
+              "duration": 15837576
             }
           }
         ],
@@ -787,7 +787,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 77029017
+              "duration": 47308092
             }
           },
           {
@@ -800,7 +800,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1297269
+              "duration": 416537
             }
           },
           {
@@ -813,7 +813,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 103194839
+              "duration": 76537680
             }
           },
           {
@@ -826,7 +826,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 375357
+              "duration": 430270
             }
           },
           {
@@ -839,7 +839,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 84401498
+              "duration": 92114941
             }
           },
           {
@@ -852,7 +852,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 53933
+              "duration": 47808
             }
           },
           {
@@ -865,7 +865,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 21231
+              "duration": 20587
             }
           },
           {
@@ -878,7 +878,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 725779,
+              "duration": 562359,
               "error_message": "AssertionError [ERR_ASSERTION]: Push should be rejected\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:218:3)"
             }
           },
@@ -900,7 +900,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 19800519
+              "duration": 16022172
             }
           }
         ],
@@ -924,7 +924,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 92770798
+              "duration": 55962880
             }
           },
           {
@@ -937,7 +937,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 538710
+              "duration": 541650
             }
           },
           {
@@ -950,7 +950,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 85671911
+              "duration": 76585019
             }
           },
           {
@@ -963,7 +963,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 87536589
+              "duration": 77417330
             }
           },
           {
@@ -976,7 +976,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110648
+              "duration": 123706
             }
           },
           {
@@ -989,7 +989,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 58043
+              "duration": 56966
             }
           },
           {
@@ -997,7 +997,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 16352720
+              "duration": 16328524
             }
           }
         ],
@@ -1021,7 +1021,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 64435367
+              "duration": 49654591
             }
           },
           {
@@ -1034,7 +1034,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 442331
+              "duration": 503858
             }
           },
           {
@@ -1047,7 +1047,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 130955824
+              "duration": 126365374
             }
           },
           {
@@ -1060,7 +1060,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23873972
+              "duration": 24980733
             }
           },
           {
@@ -1073,7 +1073,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 100464
+              "duration": 113977
             }
           },
           {
@@ -1086,7 +1086,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 48950
+              "duration": 139346
             }
           },
           {
@@ -1094,7 +1094,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 12868438
+              "duration": 13562304
             }
           }
         ],
@@ -1118,7 +1118,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 65323719
+              "duration": 59406139
             }
           },
           {
@@ -1131,7 +1131,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1241905
+              "duration": 387501
             }
           },
           {
@@ -1144,7 +1144,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 15105447
+              "duration": 12639306
             }
           },
           {
@@ -1157,7 +1157,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 101126
+              "duration": 122053
             }
           },
           {
@@ -1170,7 +1170,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 66780
+              "duration": 83944
             }
           },
           {
@@ -1183,7 +1183,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 47534
+              "duration": 43951
             }
           },
           {
@@ -1191,7 +1191,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5400802
+              "duration": 4095819
             }
           }
         ],
@@ -1215,7 +1215,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 59391771
+              "duration": 48573206
             }
           },
           {
@@ -1228,7 +1228,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 437402
+              "duration": 359813
             }
           },
           {
@@ -1241,7 +1241,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 123057907
+              "duration": 79497420
             }
           },
           {
@@ -1298,7 +1298,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 18065165
+              "duration": 12099184
             }
           }
         ],
@@ -1322,7 +1322,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 63453941
+              "duration": 47632923
             }
           },
           {
@@ -1335,7 +1335,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 510655
+              "duration": 501286
             }
           },
           {
@@ -1348,7 +1348,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 912194
+              "duration": 778033
             }
           },
           {
@@ -1361,7 +1361,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 145139
+              "duration": 127325
             }
           },
           {
@@ -1374,7 +1374,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 87225
+              "duration": 84979
             }
           },
           {
@@ -1387,7 +1387,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 133965
+              "duration": 117696
             }
           },
           {
@@ -1400,7 +1400,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 194557
+              "duration": 162459
             }
           },
           {
@@ -1408,7 +1408,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 7993766
+              "duration": 4617127
             }
           }
         ],
@@ -1432,7 +1432,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 62258576
+              "duration": 54656809
             }
           },
           {
@@ -1445,7 +1445,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1261850
+              "duration": 821465
             }
           },
           {
@@ -1458,7 +1458,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 608420
+              "duration": 2912893
             }
           },
           {
@@ -1471,7 +1471,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 480704
+              "duration": 558295
             }
           },
           {
@@ -1484,7 +1484,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 222844
+              "duration": 260874
             }
           },
           {
@@ -1497,7 +1497,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 191312
+              "duration": 184859
             }
           },
           {
@@ -1510,7 +1510,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 741151,
+              "duration": 691829,
               "error_message": "AssertionError [ERR_ASSERTION]: Should have exactly one pre-commit hook\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:345:3)"
             }
           },
@@ -1519,7 +1519,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 9737975
+              "duration": 7090109
             }
           }
         ],
@@ -1543,7 +1543,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 59919541
+              "duration": 65077616
             }
           },
           {
@@ -1556,7 +1556,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 685206
+              "duration": 392883
             }
           },
           {
@@ -1569,7 +1569,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 118494
+              "duration": 96431
             }
           },
           {
@@ -1582,7 +1582,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 80910
+              "duration": 117734
             }
           },
           {
@@ -1595,7 +1595,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 65586
+              "duration": 92242
             }
           },
           {
@@ -1608,7 +1608,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 57822
+              "duration": 55417
             }
           },
           {
@@ -1621,7 +1621,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 46807
+              "duration": 43545
             }
           },
           {
@@ -1629,7 +1629,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 5461585
+              "duration": 8699689
             }
           }
         ],
@@ -1653,7 +1653,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 61533812
+              "duration": 69602191
             }
           },
           {
@@ -1666,7 +1666,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 428948
+              "duration": 648251
             }
           },
           {
@@ -1679,7 +1679,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 272330
+              "duration": 881155
             }
           },
           {
@@ -1692,7 +1692,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 467780777
+              "duration": 227556467
             }
           },
           {
@@ -1705,7 +1705,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 755805,
+              "duration": 726317,
               "error_message": "AssertionError [ERR_ASSERTION]: Should report missing command\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:398:3)"
             }
           },
@@ -1740,7 +1740,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6556584
+              "duration": 8824501
             }
           }
         ],
@@ -1764,7 +1764,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 60685559
+              "duration": 81227250
             }
           },
           {
@@ -1777,7 +1777,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 435512
+              "duration": 436284
             }
           },
           {
@@ -1790,7 +1790,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 472177
+              "duration": 554531
             }
           },
           {
@@ -1847,7 +1847,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6717524
+              "duration": 9980262
             }
           }
         ],
@@ -1871,7 +1871,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 59985225
+              "duration": 83251372
             }
           },
           {
@@ -1884,7 +1884,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 404914
+              "duration": 4365841
             }
           },
           {
@@ -1897,7 +1897,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 392256
+              "duration": 815004
             }
           },
           {
@@ -1910,7 +1910,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 478272494
+              "duration": 399114653
             }
           },
           {
@@ -1923,7 +1923,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 120380
+              "duration": 106795
             }
           },
           {
@@ -1936,7 +1936,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 87393
+              "duration": 53314
             }
           },
           {
@@ -1944,7 +1944,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 10000566
+              "duration": 9645063
             }
           }
         ],
@@ -1968,7 +1968,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 58257661
+              "duration": 48655734
             }
           },
           {
@@ -1981,7 +1981,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 434157
+              "duration": 519254
             }
           },
           {
@@ -1994,7 +1994,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 452472
+              "duration": 453712
             }
           },
           {
@@ -2007,7 +2007,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 379865323
+              "duration": 292641048
             }
           },
           {
@@ -2020,7 +2020,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 661790,
+              "duration": 795798,
               "error_message": "AssertionError [ERR_ASSERTION]: Should show progress message\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:480:3)"
             }
           },
@@ -2042,7 +2042,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 11509289
+              "duration": 8550716
             }
           }
         ],
@@ -2066,7 +2066,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 56005970
+              "duration": 49039652
             }
           },
           {
@@ -2079,7 +2079,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 452706
+              "duration": 374740
             }
           },
           {
@@ -2092,7 +2092,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 98908
+              "duration": 83966
             }
           },
           {
@@ -2105,7 +2105,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 47209905
+              "duration": 47818037
             }
           },
           {
@@ -2118,7 +2118,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 283867
+              "duration": 101085
             }
           },
           {
@@ -2131,7 +2131,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 144677
+              "duration": 47969
             }
           },
           {
@@ -2139,7 +2139,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 8617642
+              "duration": 10537776
             }
           }
         ],
