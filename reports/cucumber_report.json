@@ -1,112 +1,108 @@
 [
   {
-    "description": "  Test that git hooks enforce test execution before commits and pushes",
+    "description": "  As a development team\n  We want automated test execution before commits and pushes\n  So that code quality gates are enforced at the source control level",
     "elements": [
       {
         "description": "",
-        "id": "git-hooks-for-test-enforcement;hooks-exist-and-are-executable",
+        "id": "git-hooks-for-test-enforcement;pre-commit-hook-prevents-commits-when-tests-fail;successful-commit-with-passing-tests",
         "keyword": "Scenario",
-        "line": 4,
-        "name": "Hooks exist and are executable",
+        "line": 12,
+        "name": "Successful commit with passing tests",
         "steps": [
           {
             "arguments": [],
-            "keyword": "Then ",
-            "line": 5,
-            "name": "the pre-commit hook file exists",
-            "match": {
-              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 461337
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 6,
-            "name": "the pre-push hook file exists",
-            "match": {
-              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 153433
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
+            "keyword": "Given ",
             "line": 7,
-            "name": "the pre-commit hook is executable",
+            "name": "the git repository is initialized",
             "match": {
-              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:18"
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
             },
             "result": {
               "status": "passed",
-              "duration": 146944
+              "duration": 45846903
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 8,
-            "name": "the pre-push hook is executable",
+            "name": "the test framework is available",
             "match": {
-              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:24"
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
             },
             "result": {
               "status": "passed",
-              "duration": 143850
+              "duration": 1087726
             }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "git-hooks-for-test-enforcement;pre-commit-hook-contains-test-command",
-        "keyword": "Scenario",
-        "line": 10,
-        "name": "Pre-commit hook contains test command",
-        "steps": [
+          },
           {
             "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "the pre-commit hook runs npm test",
+            "keyword": "Given ",
+            "line": 13,
+            "name": "the developer has staged changes",
             "match": {
-              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:30"
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:52"
             },
             "result": {
               "status": "passed",
-              "duration": 275039
+              "duration": 13175080
             }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "git-hooks-for-test-enforcement;pre-push-hook-contains-test-command",
-        "keyword": "Scenario",
-        "line": 13,
-        "name": "Pre-push hook contains test command",
-        "steps": [
+          },
           {
             "arguments": [],
-            "keyword": "Then ",
+            "keyword": "When ",
             "line": 14,
-            "name": "the pre-push hook runs npm test",
+            "name": "the developer attempts to commit",
             "match": {
-              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:35"
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:80"
             },
             "result": {
               "status": "passed",
-              "duration": 266842
+              "duration": 26457796
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the pre-commit hook executes the test suite",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117951
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "all tests pass",
+            "result": {
+              "status": "ambiguous",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "the commit is created successfully",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:99"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9586139
             }
           }
         ],
@@ -115,22 +111,2035 @@
       },
       {
         "description": "",
-        "id": "git-hooks-for-test-enforcement;hooks-can-be-bypassed-with---no-verify",
+        "id": "git-hooks-for-test-enforcement;pre-commit-hook-prevents-commits-when-tests-fail;blocked-commit-due-to-failing-tests",
         "keyword": "Scenario",
-        "line": 16,
-        "name": "Hooks can be bypassed with --no-verify",
+        "line": 19,
+        "name": "Blocked commit due to failing tests",
         "steps": [
           {
             "arguments": [],
-            "keyword": "Then ",
-            "line": 17,
-            "name": "developers can use --no-verify to bypass hooks",
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
             "match": {
-              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:40"
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
             },
             "result": {
               "status": "passed",
-              "duration": 112073
+              "duration": 45887811
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 615950
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 20,
+            "name": "the developer has staged changes",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13924429
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the test suite contains failing tests",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 674756
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 22,
+            "name": "the developer attempts to commit",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25654107
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "the pre-commit hook executes the test suite",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 70956
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the tests fail",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:106"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 98302
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "the commit is rejected",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:110"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 6051219,
+              "error_message": "AssertionError [ERR_ASSERTION]: Commit should be rejected\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:111:3)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "the developer receives clear failure feedback",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:114"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9754193
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;pre-commit-hook-prevents-commits-when-tests-fail;blocked-commit-with-partial-test-failures",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "Blocked commit with partial test failures",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43682337
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1260035
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 29,
+            "name": "the developer has staged changes",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12921897
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 30,
+            "name": "some tests pass while others fail",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:64"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 410929
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 31,
+            "name": "the developer attempts to commit",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26024593
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 32,
+            "name": "the pre-commit hook executes the test suite",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 54789
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 33,
+            "name": "the hook treats partial failure as complete failure",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:119"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 539492,
+              "error_message": "AssertionError [ERR_ASSERTION]: Partial failure should reject commit\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:120:3)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "the commit is rejected",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:110"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7469083
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;pre-commit-hook-prevents-commits-when-tests-fail;commit-with-override-bypasses-tests",
+        "keyword": "Scenario",
+        "line": 36,
+        "name": "Commit with override bypasses tests",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48188320
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 437509
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 37,
+            "name": "the developer has staged changes",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13347491
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "the developer commits with the no-verify option",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25151078
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 39,
+            "name": "the pre-commit hook is bypassed",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:123"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 105604
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "the commit is created without running tests",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:128"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11248399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7936637
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;pre-commit-hook-prevents-commits-when-tests-fail;commit-attempt-with-no-staged-changes",
+        "keyword": "Scenario",
+        "line": 42,
+        "name": "Commit attempt with no staged changes",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43658959
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 461431
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 43,
+            "name": "the developer has no staged changes",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:70"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11420489
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 44,
+            "name": "the developer attempts to commit",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14252691
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 45,
+            "name": "the commit is rejected by git before the hook runs",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:134"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 569977,
+              "error_message": "AssertionError [ERR_ASSERTION]: Should be a \"no changes\" error\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:136:3)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4590742
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;pre-commit-hook-prevents-commits-when-tests-fail;hook-execution-exceeds-reasonable-time-threshold",
+        "keyword": "Scenario",
+        "line": 47,
+        "name": "Hook execution exceeds reasonable time threshold",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43181033
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 477446
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 48,
+            "name": "the developer has staged changes",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12678801
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "the test suite execution is abnormally slow",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 386035
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 50,
+            "name": "the developer attempts to commit",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24732336
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 51,
+            "name": "the pre-commit hook provides progress feedback",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:140"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 569271,
+              "error_message": "AssertionError [ERR_ASSERTION]: Should show progress\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:142:3)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 52,
+            "name": "the developer can interrupt the operation safely",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:146"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7533280
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;pre-push-hook-prevents-pushes-when-tests-fail;successful-push-with-passing-tests",
+        "keyword": "Scenario",
+        "line": 56,
+        "name": "Successful push with passing tests",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47256277
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 417875
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 57,
+            "name": "the developer has commits ready to push",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:152"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 69079448
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 58,
+            "name": "the developer attempts to push",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:181"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 69345338
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "the pre-push hook executes the test suite",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:208"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 103871
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 60,
+            "name": "all tests pass",
+            "result": {
+              "status": "ambiguous",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "the push completes successfully",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:213"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15823837
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;pre-push-hook-prevents-pushes-when-tests-fail;blocked-push-due-to-failing-tests",
+        "keyword": "Scenario",
+        "line": 63,
+        "name": "Blocked push due to failing tests",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44227730
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 385935
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 64,
+            "name": "the developer has commits ready to push",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:152"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 69749820
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "the test suite contains failing tests",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 568538
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 66,
+            "name": "the developer attempts to push",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:181"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 68675218
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "the pre-push hook executes the test suite",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:208"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50660
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 68,
+            "name": "the tests fail",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:106"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20820
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 69,
+            "name": "the push is rejected",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:217"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 556341,
+              "error_message": "AssertionError [ERR_ASSERTION]: Push should be rejected\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:218:3)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 70,
+            "name": "the developer receives clear failure feedback",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:114"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14475684
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;pre-push-hook-prevents-pushes-when-tests-fail;push-with-override-bypasses-tests",
+        "keyword": "Scenario",
+        "line": 72,
+        "name": "Push with override bypasses tests",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42951088
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 526623
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 73,
+            "name": "the developer has commits ready to push",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:152"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 68089528
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 74,
+            "name": "the developer pushes with the no-verify option",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:186"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 73155371
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 75,
+            "name": "the pre-push hook is bypassed",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:221"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 105347
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 76,
+            "name": "the push completes without running tests",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:226"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47983
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14531417
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;pre-push-hook-prevents-pushes-when-tests-fail;push-multiple-commits-with-mixed-test-states",
+        "keyword": "Scenario",
+        "line": 78,
+        "name": "Push multiple commits with mixed test states",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50154380
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 519390
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 79,
+            "name": "the developer has multiple commits ready to push",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:171"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 132087910
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 80,
+            "name": "the developer attempts to push",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:181"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24703270
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 81,
+            "name": "the pre-push hook executes tests against the current codebase state",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:231"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 107511
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 82,
+            "name": "the hook evaluates the final state rather than individual commits",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:236"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 53548
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10955670
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;pre-push-hook-prevents-pushes-when-tests-fail;force-push-respects-hook-behavior",
+        "keyword": "Scenario",
+        "line": 84,
+        "name": "Force push respects hook behavior",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55519398
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 437044
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 85,
+            "name": "the developer attempts a force push",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:191"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12398414
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 86,
+            "name": "the operation is initiated",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:196"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2929155
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 87,
+            "name": "the pre-push hook still executes unless overridden",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:241"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 91723
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 88,
+            "name": "test enforcement applies equally to force pushes",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:247"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43662
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3817599
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;pre-push-hook-prevents-pushes-when-tests-fail;push-fails-due-to-remote-issues-after-tests-pass",
+        "keyword": "Scenario",
+        "line": 90,
+        "name": "Push fails due to remote issues after tests pass",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74802442
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 422159
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 91,
+            "name": "the developer has commits ready to push",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:152"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 90216479
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 92,
+            "name": "all tests pass",
+            "result": {
+              "status": "ambiguous",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 93,
+            "name": "the push encounters remote connection failure",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:201"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 94,
+            "name": "the developer can distinguish between test failure and network failure",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:252"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 95,
+            "name": "retry does not re-run tests unnecessarily",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:260"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13025381
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;hook-installation-and-configuration;hooks-are-properly-installed",
+        "keyword": "Scenario",
+        "line": 99,
+        "name": "Hooks are properly installed",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 57737162
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 469189
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 100,
+            "name": "the developer installs the git hooks",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:266"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 778460
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 101,
+            "name": "the pre-commit hook is placed in the git hooks directory",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:288"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 141530
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 102,
+            "name": "the pre-push hook is placed in the git hooks directory",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:293"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 78222
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 103,
+            "name": "both hooks have executable permissions",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:298"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 125494
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 104,
+            "name": "the hooks reference the correct test command",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:309"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 183282
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4981537
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;hook-installation-and-configuration;hook-reinstallation-updates-existing-hooks",
+        "keyword": "Scenario",
+        "line": 106,
+        "name": "Hook reinstallation updates existing hooks",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60018368
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 435647
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 107,
+            "name": "git hooks are already installed",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:315"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 498282
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 108,
+            "name": "the developer reinstalls or updates the hooks",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:323"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 388155
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 109,
+            "name": "the existing hook files are replaced",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:330"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 184831
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 110,
+            "name": "the new hook configuration takes effect",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:336"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 153075
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 111,
+            "name": "no orphaned or duplicate hooks remain",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:342"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 658478,
+              "error_message": "AssertionError [ERR_ASSERTION]: Should have exactly one pre-commit hook\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:345:3)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7744380
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;hook-installation-and-configuration;installation-fails-due-to-permission-restrictions",
+        "keyword": "Scenario",
+        "line": 113,
+        "name": "Installation fails due to permission restrictions",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45283773
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 393829
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 114,
+            "name": "the hooks directory is not writable",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:348"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 86226
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 115,
+            "name": "the developer attempts to install hooks",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:353"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 66887
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 116,
+            "name": "the installation reports a permission error",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:362"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 56756
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 117,
+            "name": "provides guidance on resolving the issue",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:367"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44016
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 118,
+            "name": "no partial installation occurs",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:371"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 39000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3970723
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;hook-installation-and-configuration;test-framework-unavailable-during-hook-execution",
+        "keyword": "Scenario",
+        "line": 120,
+        "name": "Test framework unavailable during hook execution",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44210490
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 412655
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 121,
+            "name": "the test framework is not accessible",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:376"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 222738
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 122,
+            "name": "a git hook attempts to run tests",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:382"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 291357549
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 123,
+            "name": "the hook reports the missing dependency clearly",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:396"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 600169,
+              "error_message": "AssertionError [ERR_ASSERTION]: Should report missing command\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:398:3)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 124,
+            "name": "the git operation is blocked",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:402"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 125,
+            "name": "the developer receives installation guidance",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:406"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5028159
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;hook-installation-and-configuration;hooks-directory-contains-conflicting-files",
+        "keyword": "Scenario",
+        "line": 127,
+        "name": "Hooks directory contains conflicting files",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42459502
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1259125
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 128,
+            "name": "custom hook files already exist in the hooks directory",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:411"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 473360
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 129,
+            "name": "the developer installs the test enforcement hooks",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 130,
+            "name": "the installation detects the conflict",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:418"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 131,
+            "name": "prompts for merge or overwrite decision",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:422"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 132,
+            "name": "preserves developer intent",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:427"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4041791
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;hook-installation-and-configuration;zero-tests-in-test-suite",
+        "keyword": "Scenario",
+        "line": 134,
+        "name": "Zero tests in test suite",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 57823818
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 430685
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 135,
+            "name": "the test suite contains no test cases",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:432"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 349024
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 136,
+            "name": "a hook executes the test suite",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:438"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 264748666
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 137,
+            "name": "the hook behavior is clearly defined",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:451"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 97870
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 138,
+            "name": "the git operation is not silently allowed",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:456"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47581
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9632930
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;hook-behavior-observability-and-auditability;hook-execution-is-visible-to-the-developer",
+        "keyword": "Scenario",
+        "line": 142,
+        "name": "Hook execution is visible to the developer",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47200065
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 402492
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 143,
+            "name": "a git hook is executing tests",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:462"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 426558
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 144,
+            "name": "the tests are running",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:470"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 249737639
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 145,
+            "name": "the developer sees real-time progress indication",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:479"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 582923,
+              "error_message": "AssertionError [ERR_ASSERTION]: Should show progress message\n    + expected - actual\n\n    -false\n    +true\n\n    at CustomWorld.<anonymous> (/Users/nimrodbeithalachmi/nimiSource/monday-band/specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:480:3)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 146,
+            "name": "can identify which hook is executing",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:483"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9924570
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "git-hooks-for-test-enforcement;hook-behavior-observability-and-auditability;hook-bypass-is-detectable",
+        "keyword": "Scenario",
+        "line": 148,
+        "name": "Hook bypass is detectable",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the git repository is initialized",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46362342
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the test framework is available",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 423403
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 149,
+            "name": "the developer uses the no-verify option",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:487"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 122355
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 150,
+            "name": "the commit or push completes",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:491"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 39687447
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 151,
+            "name": "the bypass is logged or visible in git output",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:500"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 105454
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 152,
+            "name": "teams can audit override usage patterns",
+            "match": {
+              "location": "specs/git-hooks-test-enforcement/step_definitions/git_hooks_steps.js:505"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55240
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8469202
             }
           }
         ],
