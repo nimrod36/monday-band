@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Pre-commit hook to run tests before committing
+# This hook can be bypassed with: git commit --no-verify
+
+set -e
+
+echo "🧪 Running pre-commit tests..."
+
+# Run the test suite
+if npm test; then
+    echo "✅ All tests passed!"
+    exit 0
+else
+    echo "❌ Tests failed. Commit aborted."
+    echo "💡 To commit without running tests, use: git commit --no-verify"
+    exit 1
+fi
