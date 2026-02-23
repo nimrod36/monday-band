@@ -1,8 +1,8 @@
 ---
 name: learn-feature-request
 description: Requirement ingestion and semantic shaping step to prepare a feature for high-integrity BDD specification.
-mode: agent
-help: "Input a feature request. I will absorb it deeply and produce a structured understanding artifact for downstream test planning."
+agent: agent
+argument-hint: "Input a feature request. I will absorb it deeply and produce a structured understanding artifact for downstream test planning."
 ---
 
 # Instructions

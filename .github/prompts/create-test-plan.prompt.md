@@ -1,8 +1,8 @@
 ---
 name: create-test-plan
 description: Analyzes features and generates declarative, high-integrity Gherkin test plans.
-mode: agent
-help: "Input a feature name or description. I will perform a deep analysis and generate a maintainable Gherkin specification."
+agent: agent
+argument-hint: "Input a feature name or description. I will perform a deep analysis and generate a maintainable Gherkin specification."
 ---
 
 # Instructions
