@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "test": "cucumber-js",
+    "test": "cucumber-js 'specs/**/*.feature'",
     "test:bdd": "cucumber-js --format progress"
   },
   "repository": {
