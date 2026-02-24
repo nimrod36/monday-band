@@ -75,8 +75,27 @@ This project uses git hooks for automated test enforcement:
 
 See [docs/GIT_HOOKS_IMPLEMENTATION.md](docs/GIT_HOOKS_IMPLEMENTATION.md) for implementation details.
 
+## AI-Powered Feature Development 🤖
+
+This project includes automated workflows for feature development:
+
+### Auto Feature Branch & PR
+When you create a GitHub issue, the system automatically:
+1. Creates a feature branch
+2. Generates BDD test plan using AI (Copilot)
+3. Opens a draft PR with test scenarios
+
+**Usage**: Just create an issue! The workflow handles the rest.
+
+See [docs/AUTO_FEATURE_WORKFLOW.md](docs/AUTO_FEATURE_WORKFLOW.md) for full details.
+
+### Requirements
+- GitHub secret `MODELS_TOKEN` for AI test generation
+- Prompts available in `.github/prompts/` directory
+
 ## Documentation
 
+- [Auto Feature Workflow](docs/AUTO_FEATURE_WORKFLOW.md)
 - [Git Hooks Implementation](docs/GIT_HOOKS_IMPLEMENTATION.md)
 - [Test Coverage Report](coverage/TEST_COVERAGE_REPORT.md)
 - [Hooks Usage Guide](hooks/README.md)

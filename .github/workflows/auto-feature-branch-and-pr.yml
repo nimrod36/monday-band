@@ -1,0 +1,350 @@
+name: Auto Feature Branch and PR
+
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  issues: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-feature-branch:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Feature Branch and Test Plan
+        uses: actions/github-script@v7
+        env:
+          MODELS_TOKEN: ${{ secrets.MODELS_TOKEN }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issueNumber = context.payload.issue.number;
+            const issueTitle = context.payload.issue.title;
+            const issueBody = context.payload.issue.body || '';
+            const issueLabels = context.payload.issue.labels.map(l => l.name).join(', ');
+            
+            // Create branch name from issue title
+            const branchName = `feature/issue-${issueNumber}-${issueTitle
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/^-+|-+$/g, '')
+              .substring(0, 50)}`;
+            
+            console.log(`Creating branch: ${branchName}`);
+            
+            // Get the default branch SHA
+            const { data: ref } = await github.rest.git.getRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'heads/main'
+            });
+            
+            // Create new branch
+            try {
+              await github.rest.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `refs/heads/${branchName}`,
+                sha: ref.object.sha
+              });
+              console.log(`✅ Branch created: ${branchName}`);
+            } catch (error) {
+              if (error.status === 422) {
+                console.log('Branch already exists, continuing...');
+              } else {
+                throw error;
+              }
+            }
+            
+            // Read prompt files
+            const fs = require('fs');
+            const path = require('path');
+            
+            let learnPrompt, createTestPlanPrompt;
+            try {
+              learnPrompt = fs.readFileSync('.github/prompts/learn-feature-request.prompt.md', 'utf8');
+              createTestPlanPrompt = fs.readFileSync('.github/prompts/create-test-plan.prompt.md', 'utf8');
+            } catch (error) {
+              console.log('⚠️ Could not read prompt files, using simplified prompts');
+              learnPrompt = 'Analyze the feature request and understand the requirements.';
+              createTestPlanPrompt = 'Generate comprehensive Gherkin BDD test scenarios.';
+            }
+            
+            // Phase 1: Learn Feature Request (Understanding)
+            const learnSystemPrompt = `You are a Lead Developer and Requirements Shaper.
+            
+            ${learnPrompt}
+            
+            Analyze the feature request deeply and produce a structured understanding artifact.
+            Focus on: business intent, scope boundaries, assumptions, and business rules.
+            
+            Output a clear analysis document following the prompt structure.`;
+            
+            const learnUserPrompt = `Analyze this GitHub issue for feature development:
+            
+            **Issue #${issueNumber}: ${issueTitle}**
+            **Labels**: ${issueLabels || 'None'}
+            
+            **Description**:
+            ${issueBody}
+            
+            Produce a structured understanding artifact that captures the business intent, scope boundaries, and key assumptions.`;
+            
+            console.log('🧠 Phase 1: Learning feature request...');
+            
+            const modelsToken = process.env.MODELS_TOKEN || process.env.GITHUB_TOKEN;
+            let featureUnderstanding = '';
+            
+            try {
+              const learnResponse = await fetch('https://models.inference.ai.azure.com/chat/completions', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${modelsToken}`
+                },
+                body: JSON.stringify({
+                  model: 'gpt-4o',
+                  messages: [
+                    { role: 'system', content: learnSystemPrompt },
+                    { role: 'user', content: learnUserPrompt }
+                  ],
+                  temperature: 0.7,
+                  max_tokens: 2000
+                })
+              });
+              
+              if (learnResponse.ok) {
+                const learnData = await learnResponse.json();
+                featureUnderstanding = learnData.choices[0].message.content;
+                console.log('✅ Feature understanding generated');
+              }
+            } catch (error) {
+              console.log('⚠️ Learn phase failed:', error.message);
+            }
+            
+            // Phase 2: Create Test Plan (Gherkin scenarios)
+            const testPlanSystemPrompt = `You are a Senior BDD Architect and Quality Lead.
+            
+            ${createTestPlanPrompt}
+            
+            Generate a comprehensive, declarative Gherkin test plan that serves as Living Documentation.
+            Follow the Specification by Example approach.
+            
+            CRITICAL: Output ONLY the Gherkin feature file content, no markdown code fences, no explanations.
+            Start directly with "Feature:" and follow standard Gherkin syntax.`;
+            
+            const testPlanUserPrompt = `Generate a comprehensive BDD test plan for this feature:
+            
+            **Issue #${issueNumber}: ${issueTitle}**
+            **Labels**: ${issueLabels || 'None'}
+            
+            **Original Request**:
+            ${issueBody}
+            
+            ${featureUnderstanding ? `\n**Feature Understanding**:\n${featureUnderstanding}\n` : ''}
+            
+            Create a complete Gherkin feature file with:
+            - Feature description with business value
+            - Background (if needed)
+            - Multiple scenarios covering happy path, edge cases, and error handling
+            - Declarative steps (behavior-focused, not implementation-focused)
+            
+            Output ONLY the Gherkin content, starting with "Feature:".`;
+            
+            console.log('📝 Phase 2: Creating test plan...');
+            
+            let testPlanContent = '';
+            
+            try {
+              const testPlanResponse = await fetch('https://models.inference.ai.azure.com/chat/completions', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${modelsToken}`
+                },
+                body: JSON.stringify({
+                  model: 'gpt-4o',
+                  messages: [
+                    { role: 'system', content: testPlanSystemPrompt },
+                    { role: 'user', content: testPlanUserPrompt }
+                  ],
+                  temperature: 0.7,
+                  max_tokens: 3000
+                })
+              });
+              
+              if (testPlanResponse.ok) {
+                const testPlanData = await testPlanResponse.json();
+                testPlanContent = testPlanData.choices[0].message.content;
+                
+                // Clean up any markdown code fences if present
+                testPlanContent = testPlanContent
+                  .replace(/```gherkin\n?/g, '')
+                  .replace(/```\n?/g, '')
+                  .trim();
+                
+                console.log('✅ Test plan generated');
+              }
+            } catch (error) {
+              console.log('⚠️ Test plan generation failed:', error.message);
+              testPlanContent = `Feature: ${issueTitle}
+              
+  Scenario: Placeholder scenario
+    Given the feature is implemented
+    When the user interacts with the system
+    Then the expected behavior should occur`;
+            }
+            
+            // Create feature directory and file
+            const featureName = issueTitle
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/^-+|-+$/g, '');
+            
+            const featurePath = `specs/issue-${issueNumber}-${featureName}`;
+            const featureFileName = `${featureName}.feature`;
+            
+            // Create the feature file content
+            const featureFileContent = testPlanContent;
+            
+            // Get current file content to check if path exists
+            let fileExists = false;
+            try {
+              await github.rest.repos.getContent({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path: `${featurePath}/${featureFileName}`,
+                ref: branchName
+              });
+              fileExists = true;
+            } catch (error) {
+              // File doesn't exist, which is expected
+            }
+            
+            // Create or update the feature file on the new branch
+            const fileOperation = fileExists ? 'update' : 'create';
+            
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: `${featurePath}/${featureFileName}`,
+              message: `Add BDD test plan for issue #${issueNumber}`,
+              content: Buffer.from(featureFileContent).toString('base64'),
+              branch: branchName,
+              ...(fileExists && { sha: (await github.rest.repos.getContent({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path: `${featurePath}/${featureFileName}`,
+                ref: branchName
+              })).data.sha })
+            });
+            
+            console.log(`✅ Feature file created: ${featurePath}/${featureFileName}`);
+            
+            // Create step_definitions directory with placeholder
+            const stepDefContent = `// Step definitions for: ${issueTitle}
+// Issue: #${issueNumber}
+
+const { Given, When, Then } = require('@cucumber/cucumber');
+
+// TODO: Implement step definitions for the feature scenarios
+
+Given('the feature is implemented', function () {
+  // TODO: Setup preconditions
+});
+
+When('the user interacts with the system', function () {
+  // TODO: Trigger the action
+});
+
+Then('the expected behavior should occur', function () {
+  // TODO: Verify the outcome
+});
+`;
+            
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: `${featurePath}/step_definitions/${featureName}_steps.js`,
+              message: `Add step definitions placeholder for issue #${issueNumber}`,
+              content: Buffer.from(stepDefContent).toString('base64'),
+              branch: branchName
+            });
+            
+            console.log(`✅ Step definitions placeholder created`);
+            
+            // Create Pull Request
+            const prBody = `## 🤖 Auto-generated Feature Branch
+            
+This PR was automatically created from issue #${issueNumber}.
+
+### 📋 Feature Overview
+${featureUnderstanding ? featureUnderstanding : issueBody}
+
+### 🧪 BDD Test Plan
+A comprehensive Gherkin test plan has been generated at:
+\`${featurePath}/${featureFileName}\`
+
+### ✅ Next Steps
+1. Review the generated BDD scenarios
+2. Implement the step definitions in \`${featurePath}/step_definitions/\`
+3. Implement the feature to make the tests pass
+4. Run tests: \`npm test\`
+5. Update this PR with your implementation
+
+### 🔗 Related
+Closes #${issueNumber}
+
+---
+*Generated by the Auto Feature Branch workflow using GitHub Copilot*`;
+            
+            const { data: pr } = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Feature: ${issueTitle} (#${issueNumber})`,
+              head: branchName,
+              base: 'main',
+              body: prBody,
+              draft: true
+            });
+            
+            console.log(`✅ Pull request created: #${pr.number}`);
+            
+            // Add comment to the original issue
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: `🤖 **Automated Feature Kickoff Complete!**
+              
+✅ Branch created: \`${branchName}\`
+✅ BDD test plan generated: \`${featurePath}/${featureFileName}\`
+✅ Pull request opened: #${pr.number}
+
+**Next steps:**
+1. Review the [pull request](#${pr.number}) and generated test plan
+2. Implement the step definitions
+3. Implement the feature to satisfy the BDD scenarios
+4. Mark the PR as ready for review
+
+The test plan was generated using the kickoff-feature workflow with AI-powered analysis.`
+            });
+            
+            console.log('✅ Workflow complete!');
