@@ -1,12 +1,12 @@
 // scripts/auto-feature-branch-and-pr.js
 // Extracted from workflow for clarity and maintainability
 
-const { GitHub, context } = require('@actions/github');
+const { getOctokit, context } = require('@actions/github');
 const fs = require('fs');
 const path = require('path');
 
 async function main() {
-  const github = new GitHub(process.env.GITHUB_TOKEN);
+  const github = getOctokit(process.env.GITHUB_TOKEN);
   const issueNumber = context.payload.issue.number;
   const issueTitle = context.payload.issue.title;
   const issueBody = context.payload.issue.body || '';
