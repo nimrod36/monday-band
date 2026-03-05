@@ -7,10 +7,28 @@ const path = require('path');
 
 async function main() {
   const github = getOctokit(process.env.GITHUB_TOKEN);
-  const issueNumber = context.payload.issue.number;
-  const issueTitle = context.payload.issue.title;
-  const issueBody = context.payload.issue.body || '';
-  const issueLabels = context.payload.issue.labels.map(l => l.name).join(', ');
+  
+  // Support both issue trigger and manual workflow_dispatch
+  let issueNumber, issueTitle, issueBody, issueLabels;
+  
+  if (context.eventName === 'workflow_dispatch') {
+    // Manual trigger - fetch issue details
+    issueNumber = context.payload.inputs.issue_number;
+    const { data: issue } = await github.rest.issues.get({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: issueNumber
+    });
+    issueTitle = issue.title;
+    issueBody = issue.body || '';
+    issueLabels = issue.labels.map(l => l.name).join(', ');
+  } else {
+    // Triggered by issue event
+    issueNumber = context.payload.issue.number;
+    issueTitle = context.payload.issue.title;
+    issueBody = context.payload.issue.body || '';
+    issueLabels = context.payload.issue.labels.map(l => l.name).join(', ');
+  }
 
   // Create branch name from issue title
   const branchName = `feature/issue-${issueNumber}-${issueTitle
